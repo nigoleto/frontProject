@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="projectCSS.css">
+</head>
+<body>
+<header>
+    <a class="link-home" name="link-home"></a>
+    <nav>
+            <a class="home" href="">
+                <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="130px" >
+            </a>
+            <div class="nav-right">
+                <a href="#link-home">Home</a>
+                <a href="#link-about">About</a>
+                <a href="#link-support">Support</a>
+                <button>Download</button>
+            </div>
+    </nav>
+    <div class="header-box">
+        <div class="header-content">
+            <p class="txt-title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+            <p class="txt-content">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem culpa, deserunt distinctio explicabo, id iste laborum natus nobis officia porro provident quaerat quos rerum sit soluta tenetur ullam voluptatibus!
+            </p>
+            <button>Download</button>
+        </div>
+        <img src="img/img_cat_png.png" alt="" width="415px">
+    </div>
+</header>
+<main>
+    <section class="section1">
+        <img src="img/img_4.png" alt="">
+        <div class="div1">
+            <p class="txt-title2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+            <p class="txt-content2">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+        </div>
+    </section>
+    <a class="link-about" name="link-about"></a>
+    <section class="section2">
+        <div class="txt-section2">
+            <p class="txt-colorTitle">
+                dummy text of the printing and dummy
+            </p>
+            <p class="txt-content3">
+                Lorem Ipsum is simply <strong>dummy text</strong> of the printing and typesetting industry. <br>
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+            </p>
+        </div>
+        <div class="img-cat3">
+            <img class="img1" src="img/img_1.png" alt="">
+            <img src="img/img_2.png" alt="">
+            <img src="img/img_3.png" alt="">
+        </div>
+        <div class="img-cat3">
+            <img src="img/img_1%20(1).png" alt="">
+            <img src="img/img_2%20(1).png" alt="">
+            <img src="img/img_3%20(1).png" alt="">
+        </div>
+        <p class="txt-continue"> Continue exploring HODU</p>
+        <button>Show more</button>
+    </section>
+    <section class="section3">
+        <div class="map-container">
+            <p class="txt-title2">Where you'll be</p>
+            <p class="address">330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
+        </div>
+        <div class="map">
+
+        </div>
+    </section>
+    <section class="subscribe">
+        <a class="link-support" name="link-support"></a>
+        <div>
+            <p class="txt-subscribe-title">Subscribe to our Blog post</p>
+            <p class="txt-subscribe-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text </p>
+        </div>
+        <div class="form-subscribe" >
+            <div>
+                <label for="email">
+                    <img class="logo" src="img/mail.png" alt="" width="24px">
+                </label>
+                <input type="text" name="email" id="email" placeholder="Enter your e-mail address">
+            </div>
+            <button class="btn-subscribe">Subscribe</button>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="box">
+        <button type="button" class="btn-home" id="btn-home">
+        </button>
+    </div>
+    <div class="box-footer">
+        <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="226px" >
+        <div>
+            <a href="https://blog.naver.com">
+                <img src="img/icon-blog.png" alt="naver-blog로 이동" width="42px">
+            </a>
+            <a href="https://www.instagram.com">
+                <img src="img/icon-insta.png" alt="instagram으로 이동" width="42px">
+            </a>
+            <a href="https://www.facebook.com">
+                <img src="img/icon-facebook.png" alt="facebook으로 이동" width="42px">
+            </a>
+            <a href="https://www.youtube.com">
+                <img src="img/icon-youtube.png" alt="youtube로 이동" width="42px">
+            </a>
+        </div>
+    </div>
+</footer>
+    <div class="modal">
+        <div class="modal-body">
+            <img src="img/modal_cat%201.png" alt="" width="110px">
+            <p class="txt-modal-colorTitle">Thank you!</p>
+            <p class="txt-modal-content">Lorem Ipsum is simply dummy text of the printing industry. </p>
+            <button class="btn-closeModal">OK! I Love HODU</button>
+        </div>
+        <div class="modal-background">
+        </div>
+    </div>
+<script>
+    const modal = document.querySelector('.modal');
+    const btnOpenModal=document.querySelector('.btn-subscribe');
+    const btnCloseModal=document.querySelector('.btn-closeModal')
+    const btnHome=document.querySelector('#btn-home')
+
+    btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    })
+
+    btnCloseModal.addEventListener("click", ()=>{
+        modal.style.display="none";
+    })
+
+    btnHome.addEventListener("click", ()=>{
+        window.scrollTo(0,0);
+    })
+</script>
+</body>
+</html>
