@@ -64,6 +64,8 @@ nav {
     height: 102px;
     background-color: rgba(242, 233, 216, 1);
     padding: 30px 320px;
+
+    z-index: 5;
 }
 
 .nav-right {
@@ -363,7 +365,8 @@ footer {
     flex-flow: column;
     position: fixed;
     top: 20%;
-    left: 34%;
+    left: 50%;
+    transform: translate(-50%, 0);
     padding-top: 60px;
     width: 600px;
     height: 400px;

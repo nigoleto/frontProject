@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>HODU</title>
     <link rel="stylesheet" href="projectCSS.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
                 <a href="#link-home">Home</a>
                 <a href="#link-about">About</a>
                 <a href="#link-support">Support</a>
-                <button>Download</button>
+                <button type="button" class="btn-download">Download</button>
             </div>
     </nav>
     <div class="header-box">
@@ -30,7 +30,7 @@
             <p class="txt-content">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem culpa, deserunt distinctio explicabo, id iste laborum natus nobis officia porro provident quaerat quos rerum sit soluta tenetur ullam voluptatibus!
             </p>
-            <button>Download</button>
+            <button type="button" class="btn-download2">Download</button>
         </div>
         <img src="img/img_cat_png.png" alt="" width="415px">
     </div>
@@ -58,18 +58,20 @@
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
             </p>
         </div>
-        <div class="img-cat3">
-            <img class="img1" src="img/img_1.png" alt="">
-            <img src="img/img_2.png" alt="">
-            <img src="img/img_3.png" alt="">
-        </div>
-        <div class="img-cat3">
-            <img src="img/img_1%20(1).png" alt="">
-            <img src="img/img_2%20(1).png" alt="">
-            <img src="img/img_3%20(1).png" alt="">
-        </div>
+        <article class="img-container">
+            <div class="img-cat3">
+                <img src="img/img_1.png" alt="">
+                <img src="img/img_2.png" alt="">
+                <img src="img/img_3.png" alt="">
+            </div>
+            <div class="img-cat3">
+                <img src="img/img_1%20(1).png" alt="">
+                <img src="img/img_2%20(1).png" alt="">
+                <img src="img/img_3%20(1).png" alt="">
+            </div>
+        </article>
         <p class="txt-continue"> Continue exploring HODU</p>
-        <button>Show more</button>
+        <button class="btn-showMore">Show more</button>
     </section>
     <section class="section3">
         <div class="map-container">
@@ -128,16 +130,24 @@
             <p class="txt-modal-content">Lorem Ipsum is simply dummy text of the printing industry. </p>
             <button class="btn-closeModal">OK! I Love HODU</button>
         </div>
-        <div class="modal-background">
-        </div>
+        <div class="modal-background"> </div>
     </div>
 <script>
     const modal = document.querySelector('.modal');
     const btnOpenModal=document.querySelector('.btn-subscribe');
+    const btnOpenModal2=document.querySelector('.btn-download');
+    const btnOpenModal3=document.querySelector('.btn-download2');
     const btnCloseModal=document.querySelector('.btn-closeModal')
     const btnHome=document.querySelector('#btn-home')
+    const btnShowMore=document.querySelector('.btn-showMore');
 
     btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    })
+    btnOpenModal2.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    })
+    btnOpenModal3.addEventListener("click", ()=>{
         modal.style.display="flex";
     })
 
@@ -148,6 +158,22 @@
     btnHome.addEventListener("click", ()=>{
         window.scrollTo(0,0);
     })
+
+    btnShowMore.addEventListener("click", ()=>{
+        const myImgContainer = document.querySelector('.img-container');
+        const addDiv = document.createElement('div');
+
+        for(let i = 0; i<3; i++){
+            const addImg = document.createElement('img');
+            addImg.setAttribute("src", `img/cat${~~(Math.random() * 12) + 1}.png`);
+            addDiv.append(addImg);
+        }
+        addDiv.classList.add("img-cat3")
+        myImgContainer.append(addDiv);
+
+    })
+
+
 </script>
 </body>
 </html>
