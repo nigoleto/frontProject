@@ -78,7 +78,7 @@
             <p class="txt-title2">Where you'll be</p>
             <p class="address">330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
         </div>
-        <div class="map">
+        <div class="map" id="map" style="width:1278px; height: 520px;">
 
         </div>
     </section>
@@ -168,11 +168,35 @@
             addImg.setAttribute("src", `img/cat${~~(Math.random() * 12) + 1}.png`);
             addDiv.append(addImg);
         }
-        addDiv.classList.add("img-cat3")
+        addDiv.classList.add("img-cat3");
         myImgContainer.append(addDiv);
 
     })
 
+</script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb1a677922392f36a0a76fb7cdc3fd75"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+
+<script>
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(33.442350, 126.571444),
+        level: 2
+    };
+
+    var map = new kakao.maps.Map(container, options);
+    var markerPosition  = new kakao.maps.LatLng(33.442350, 126.571444);
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+    marker.setMap(map);
+
+    var mapTypeControl = new kakao.maps.MapTypeControl();
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 </script>
 </body>
