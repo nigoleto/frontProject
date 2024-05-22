@@ -63,7 +63,7 @@ nav {
 
     height: 102px;
     background-color: rgba(242, 233, 216, 1);
-    padding: 30px 320px;
+    padding: 30px 100px 30px 150px;
 
     z-index: 5;
 }
@@ -71,7 +71,13 @@ nav {
 .nav-right {
     display: flex;
     align-items: center;
+    margin: 0 0 0 50px;
     gap: 30px;
+}
+
+.nav-box {
+    flex-basis: 100px;
+    flex-shrink: 10;
 }
 
 .header-box{
