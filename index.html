@@ -1,28 +1,20 @@
 <!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HODU</title>
-    <link rel="stylesheet" href="projectCSS.css">
-</head>
 <body>
 <header>
     <a class="link-home" name="link-home"></a>
     <nav>
-<!--            <div class="nav-box"></div>-->
-            <a class="home" href="">
-                <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="130px" >
-            </a>
-            <div class="nav-right">
-                <a href="#link-home">Home</a>
-                <a href="#link-about">About</a>
-                <a href="#link-support">Support</a>
-                <button type="button" class="btn-download">Download</button>
-            </div>
-<!--            <div class="nav-box"></div>-->
+        <!--            <div class="nav-box"></div>-->
+        <a class="home" href="">
+            <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="130px" >
+        </a>
+        <div class="nav-right">
+            <a href="#link-home">Home</a>
+            <a href="#link-about">About</a>
+            <a href="#link-support">Support</a>
+            <button type="button" class="btn-download">Download</button>
+        </div>
+        <!--            <div class="nav-box"></div>-->
     </nav>
     <div class="header-box">
         <div class="header-content">
@@ -91,7 +83,7 @@
             <p class="txt-subscribe-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text </p>
         </div>
-        <div class="form-subscribe" >
+        <form class="form-subscribe" >
             <div>
                 <label for="email">
                     <img class="logo" src="img/mail.png" alt="" width="24px">
@@ -99,7 +91,7 @@
                 <input type="text" name="email" id="email" placeholder="Enter your e-mail address">
             </div>
             <button class="btn-subscribe">Subscribe</button>
-        </div>
+        </form>
     </section>
 </main>
 <footer>
@@ -125,15 +117,15 @@
         </div>
     </div>
 </footer>
-    <div class="modal">
-        <div class="modal-body">
-            <img src="img/modal_cat%201.png" alt="" width="110px">
-            <p class="txt-modal-colorTitle">Thank you!</p>
-            <p class="txt-modal-content">Lorem Ipsum is simply dummy text of the printing industry. </p>
-            <button class="btn-closeModal">OK! I Love HODU</button>
-        </div>
-        <div class="modal-background"> </div>
+<div class="modal">
+    <div class="modal-body">
+        <img src="img/modal_cat%201.png" alt="" width="110px">
+        <p class="txt-modal-colorTitle">Thank you!</p>
+        <p class="txt-modal-content">Lorem Ipsum is simply dummy text of the printing industry. </p>
+        <button class="btn-closeModal">OK! I Love HODU</button>
     </div>
+    <div class="modal-background"> </div>
+</div>
 <script>
     const modal = document.querySelector('.modal');
     const btnOpenModal=document.querySelector('.btn-subscribe');
@@ -170,13 +162,14 @@
             addImg.setAttribute("src", `img/cat${~~(Math.random() * 12) + 1}.png`);
             addDiv.append(addImg);
         }
+
         addDiv.classList.add("img-cat3");
         myImgContainer.append(addDiv);
 
     })
 
 
-
+    // ---------------------- 반응형 -----------------------
 
     const imgCat = document.querySelector('.img-header-cat')
     const mql = window.matchMedia("screen and (max-width: 768px)");
@@ -190,7 +183,15 @@
             imgCat.setAttribute("width", "415px")
         }
     });
+
+    //---------------- form 제출시 새로고침 방지 ----------------
+
+    const noForm = document.querySelector('form')
+    noForm.addEventListener('click', (e) => {
+        e.preventDefault();
+    })
 </script>
+
 
 
 <!------------------------------카카오맵 API----------------------------->
@@ -221,4 +222,12 @@
 
 </script>
 </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HODU</title>
+    <link rel="stylesheet" href="projectCSS.css">
+</head>
 </html>
