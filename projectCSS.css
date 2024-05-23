@@ -167,6 +167,11 @@ main .logo {
     border-bottom: 1px solid lightgray;
 }
 
+.section2 img {
+    width: 378px;
+    height: 378px;
+}
+
 .txt-section2 {
     display: flex;
     justify-content: center;
@@ -199,6 +204,10 @@ strong {
     display: flex;
     gap: 72px;
     justify-content: center;
+}
+
+.img-none {
+    display: none;
 }
 
 .txt-continue {
