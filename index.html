@@ -34,7 +34,7 @@
             </p>
             <button type="button" class="btn-download2">Download</button>
         </div>
-        <img src="img/img_cat_png.png" alt="" width="415px">
+        <img class="img-header-cat" src="img/img_cat_png.png" alt="" width="415px">
     </div>
 </header>
 <main>
@@ -175,7 +175,26 @@
 
     })
 
+
+
+
+    const imgCat = document.querySelector('.img-header-cat')
+    const mql = window.matchMedia("screen and (max-width: 768px)");
+
+    mql.addListener(function(e) {
+        if(e.matches) {
+            console.log('모바일 화면 입니다.');
+            imgCat.setAttribute("width", "200px");
+        } else {
+            console.log('데스크탑 화면 입니다.');
+            imgCat.setAttribute("width", "415px")
+        }
+    });
 </script>
+
+
+<!------------------------------카카오맵 API----------------------------->
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb1a677922392f36a0a76fb7cdc3fd75"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 
