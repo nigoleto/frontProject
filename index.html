@@ -11,18 +11,22 @@
 <body>
 <header>
     <a class="link-home" name="link-home"></a>
-    <nav>
-        <!--            <div class="nav-box"></div>-->
+    <div class="menu-none">
+        <img class="btn-clearMenu">
+    </div>
+    <nav class="nav">
+
         <a class="home" href="">
             <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="130px" >
         </a>
+        <img class="btn-menu">
         <div class="nav-right">
             <a href="#link-home">Home</a>
             <a href="#link-about">About</a>
             <a href="#link-support">Support</a>
             <button type="button" class="btn-download">Download</button>
         </div>
-        <!--            <div class="nav-box"></div>-->
+
     </nav>
     <div class="header-box">
         <div class="header-content">
@@ -92,7 +96,7 @@
                 Lorem Ipsum has been the industry's standard dummy text </p>
         </div>
         <form class="form-subscribe" >
-            <div>
+            <div class="input-container">
                 <label for="email">
                     <img class="logo" src="img/mail.png" alt="" width="24px">
                 </label>
@@ -134,6 +138,41 @@
     </div>
     <div class="modal-background"> </div>
 </div>
+<script>
+
+    //------------모바일 pc 구분
+    window.addEventListener("load", () => deviceCheck());
+
+    function deviceCheck() {
+
+        const user = navigator.userAgent;
+        if ( user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
+            console.log("mobile버젼");
+            btnMenu.setAttribute("src", "img/menu.png");
+            btnClear.setAttribute("src", "img/arrow-right.png");
+            myMenu.append(navEle)
+        }else{
+            console.log("pc버젼");
+            console.log(user);
+        }
+    }
+
+    const myHome = document.querySelector('.home');
+    const myMenu = document.querySelector('.menu-none');
+    const navEle = document.querySelector('.nav-right');
+
+    const btnClear = document.querySelector('.btn-clearMenu');
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener("click", () => {
+        myMenu.style.display="flex";
+    })
+
+    btnClear.addEventListener("click", () => {
+        myMenu.style.display="none";
+    })
+
+
+</script>
 <script>
     const modal = document.querySelector('.modal');
     const btnOpenModal=document.querySelector('.btn-subscribe');
@@ -236,33 +275,29 @@
         }catch(error){
             console.log(error);
         }
-    }
+    };
 
 
 
 
     // ---------------------- 반응형 -----------------------
 
-    const imgCat = document.querySelector('.img-header-cat')
-    const mql = window.matchMedia("screen and (max-width: 768px)");
-    const subscForm = document.querySelector(".form-subscribe");
-    const btnSubsc = document.querySelector(".btn-subscribe");
-
-    mql.addListener(function(e) {
-        if(e.matches) {
-            console.log('모바일 화면 입니다.');
-            imgCat.setAttribute("width", "200px");
-            btnSubsc.remove();
-            subscForm.insertAdjacentHTML("afterend", "<button class=\"btn-subscribe\">Subscribe</button>");
-        } else {
-            console.log('데스크탑 화면 입니다.');
-            imgCat.setAttribute("width", "415px")
-            btnSubsc.remove();
-            subscForm.insertAdjacentHTML("beforeend", "<button class=\"btn-subscribe\">Subscribe</button>");
-        }
-
-
-    });
+    // const imgCat = document.querySelector('.img-header-cat')
+    // const mql = window.matchMedia("screen and (max-width: 768px)");
+    //
+    //
+    // mql.addListener(function(e) {
+    //     if(e.matches) {
+    //         console.log('모바일 화면 입니다.');
+    //         imgCat.setAttribute("width", "200px");
+    //
+    //     } else {
+    //         console.log('데스크탑 화면 입니다.');
+    //         imgCat.setAttribute("width", "415px")
+    //     }
+    //
+    //
+    // });
 
     //---------------- form 제출시 새로고침 방지 ----------------
 
