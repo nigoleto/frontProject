@@ -451,4 +451,100 @@ footer {
         margin-top: 30px;
     }
 
+    main {
+        padding: 70px 30px
+    }
+
+    .section1 {
+        flex-flow: column;
+        align-items: center;
+        /*text-align: center;*/
+        width: 340px;
+        gap: 5px;
+    }
+
+    .section1 div {
+        padding: 0;
+    }
+
+    .section1 img {
+        width: 300px;
+    }
+
+    .section1 p {
+        width: 300px;
+    }
+
+
+    /*        section2        */
+    .section2 {
+        width: 340px;
+    }
+
+    .section2 p {
+        width: 300px;
+    }
+
+    .img-cat3 {
+        align-items: center;
+        flex-flow: column;
+    }
+
+    .section2 img {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .section3 {
+        width: 340px;
+    }
+
+    .section3 div{
+        width: 326px;
+    }
+
+    .section3 p {
+        width: 300px
+    }
+
+    .map {
+        width: 300px;
+        height: 300px;
+    }
+
+    .subscribe {
+        width: 340px;
+        align-items: center;
+        flex-flow: column;
+        height: auto;
+    }
+
+    .subscribe p {
+        width: 300px;
+    }
+
+    .subscribe form {
+        width: 300px;
+        margin: 60px 0;
+    }
+
+    .box-footer {
+        padding: 30px 20px;
+        flex-flow: column;
+        align-items: start;
+        justify-content: space-around;
+        gap: 50px;
+    }
+
+    .img-logo {
+        width: 112px;
+    }
+
+    .box-footer a img {
+        width: 32px;
+    }
+
+
+
 }

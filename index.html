@@ -80,7 +80,7 @@
             <p class="txt-title2">Where you'll be</p>
             <p class="address">330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
         </div>
-        <div class="map" id="map" style="width:1278px; height: 520px;">
+        <div class="map" id="map">
 
         </div>
     </section>
@@ -161,28 +161,49 @@
         window.scrollTo(0,0);
     })
 // -------------------------- show more ---------------------------
-    let pageImg = 1;
-    const myImgContainer = document.querySelector('.img-container');
-    // <div class='img-cat3'></div>
-    // <div class='img-none'></div>
+    //페이지 증가시킬 pageNum, 랜덤숫자를 만드는 함수로 pageRandom 배열에 하나씩 밀어넣음
+    let pageNum = 1;
+    let pageRandom = [];
+    function createRandom(){ //랜덤숫자가 중복되지 않게 생성해주는 함수
+        const randNum = ~~(Math.random() * 1000) + 1;
+        if(pageRandom.indexOf(randNum) === -1){
+            pageRandom.push(randNum);
+        }
+    }
 
-    const makeImg = () => {
+    // 위치 선택용  => 여기 Selector > div > img * 3 순서로 생성
+    const myImgContainer = document.querySelector('.img-container');
+
+
+    //이미지 생성하는 함수  => 이미지 생성 후 div에 담아주는 함수 div > img * 3 로 생성됨
+    async function makeImg() {
+        // div 생성
         const addDiv = document.createElement('div');
 
+        // img 생성
         for(let i = 0; i<3; i++){
             const addImg = document.createElement('img');
-            if(pageImg < 13){
-                addImg.setAttribute("src", `img/cat${pageImg++}.png`);
-            } else {
-                addImg.setAttribute("src", `https://picsum.photos/id/${~~(Math.random() * 1000) + 1}/378/378`);
+            createRandom();
+
+            if(pageNum < 13){ // 처음 12장은 그냥 저장된 img 소스에서 가져오기
+                addImg.setAttribute("src", `img/cat${pageNum++}.png`);
+            } else if(pageNum < 22) { // 다음 9장은 fetch를 이용해서 이미지 가져오기
+                makeFetchImg(pageRandom[pageNum-13], addImg);
+                pageNum++
+            } else { // 그다음 랜덤으로 이미지 가져오기
+                addImg.setAttribute("src", `https://picsum.photos/id/${pageRandom[pageNum-22]}/600/600`);
+                pageNum++;
             }
+            // 3번 반복시켜서 생성된 img를 바로 div에 append 해버리기
             addDiv.append(addImg);
         }
 
+        //div > img *3 이 생성되엇고 이미지를 3개씩 미리 만들어놓기 위해 클래스가 img-none으로 설정됨
         addDiv.classList.add("img-none");
         myImgContainer.append(addDiv);
     }
 
+    // 미리 class="img-none" 인 div 만들어 놓기
     makeImg();
 
     //img-container 의 라스트차일드의 class를 img-cat3으로 바꾸고 나서 img-none div 생성.
@@ -191,19 +212,56 @@
         makeImg();
     })
 
+
+
+    //Ajax 사용해서 불러오기
+
+    async function makeFetchImg(page, addImg) {
+        // 이 함수를 실행할 때 page를 받아와서 실행해야 다른 이미지가 생성됨
+
+        try{
+            const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=1`);
+
+            if(!response.ok){
+                throw new Error('통신실패');
+            }
+
+            // response는 json 형태라서 js의 객체로 변환 시켜줘야함.
+            const datas = await response.json();
+
+            // 객체라서 객체의 key값 하나만 빼와야 이미지src가 됨.
+            // console.log(datas)
+            addImg.setAttribute("src", datas[0].download_url);
+
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+
+
+
     // ---------------------- 반응형 -----------------------
 
     const imgCat = document.querySelector('.img-header-cat')
     const mql = window.matchMedia("screen and (max-width: 768px)");
+    const subscForm = document.querySelector(".form-subscribe");
+    const btnSubsc = document.querySelector(".btn-subscribe");
 
     mql.addListener(function(e) {
         if(e.matches) {
             console.log('모바일 화면 입니다.');
             imgCat.setAttribute("width", "200px");
+            btnSubsc.remove();
+            subscForm.insertAdjacentHTML("afterend", "<button class=\"btn-subscribe\">Subscribe</button>");
         } else {
             console.log('데스크탑 화면 입니다.');
             imgCat.setAttribute("width", "415px")
+            btnSubsc.remove();
+            subscForm.insertAdjacentHTML("beforeend", "<button class=\"btn-subscribe\">Subscribe</button>");
         }
+
+
     });
 
     //---------------- form 제출시 새로고침 방지 ----------------
@@ -229,12 +287,15 @@
     };
 
     var map = new kakao.maps.Map(container, options);
+
+    // 지도에 마커 표시
     var markerPosition  = new kakao.maps.LatLng(33.442350, 126.571444);
     var marker = new kakao.maps.Marker({
         position: markerPosition
     });
     marker.setMap(map);
 
+    // 맵타입, 확대 기능
     var mapTypeControl = new kakao.maps.MapTypeControl();
     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
