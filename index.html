@@ -55,6 +55,7 @@
     </section>
     <a class="link-about" name="link-about"></a>
     <section class="section2">
+
         <div class="txt-section2">
             <p class="txt-colorTitle">
                 dummy text of the printing and dummy
@@ -100,7 +101,7 @@
                 <label for="email">
                     <img class="logo" src="img/mail.png" alt="" width="24px">
                 </label>
-                <input type="text" name="email" id="email" placeholder="Enter your e-mail address">
+                <input type="email" name="email" id="email" placeholder="Enter your e-mail address">
             </div>
             <button class="btn-subscribe">Subscribe</button>
         </form>
@@ -203,7 +204,10 @@
     const btnShowMore=document.querySelector('.btn-showMore');
 
     btnOpenModal.addEventListener("click", ()=>{
-        modal.style.display="flex";
+        if(inputEmail.value.length < 3 || inputEmail.value.indexOf("@") === -1 ) {
+            window.alert('이메일을 입력해주세요');
+            return;
+        } modal.style.display="flex";
     })
     btnOpenModal2.addEventListener("click", ()=>{
         modal.style.display="flex";
@@ -299,32 +303,15 @@
 
 
 
-
-    // ---------------------- 반응형 -----------------------
-
-    //
-    // const mql = window.matchMedia("screen and (max-width: 768px)");
-    //
-    //
-    // mql.addListener(function(e) {
-    //     if(e.matches) {
-    //         console.log('모바일 화면 입니다.');
-    //
-    //
-    //     } else {
-    //         console.log('데스크탑 화면 입니다.');
-    //
-    //     }
-    //
-    //
-    // });
-
     //---------------- form 제출시 새로고침 방지 ----------------
 
     const noForm = document.querySelector('form')
     noForm.addEventListener('click', (e) => {
         e.preventDefault();
     })
+
+    const inputEmail = document.querySelector("#email");
+
 </script>
 
 
