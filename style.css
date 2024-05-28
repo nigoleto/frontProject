@@ -323,8 +323,7 @@ strong {
 input {
     border: 0;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
 }
 
 
@@ -381,7 +380,7 @@ footer {
 /* ------------ modal ------------ */
 
 
-.modal {
+.modal, .modal2 {
     display: none;
 
 }
@@ -438,6 +437,17 @@ footer {
     height: 50px;
 }
 
+.btn-cancel {
+    background-color: white;
+    color: #353535;
+    width: 183px;
+}
+
+.btn-cancel:hover {
+    background-color: #dadada;
+    color: black;
+}
+
 .display-none{
     display: none;
 }
@@ -460,6 +470,11 @@ footer {
  .img-header-cat{
     margin: 0 5rem;
 }
+
+ .input-value{
+     font-size: 20px;
+ }
+
 
 @keyframes slidein {
     from {

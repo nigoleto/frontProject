@@ -36,7 +36,7 @@
             <p class="txt-content">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem culpa, deserunt distinctio explicabo, id iste laborum natus nobis officia porro provident quaerat quos rerum sit soluta tenetur ullam voluptatibus!
             </p>
-            <button type="button" class="btn-download2">Download</button>
+                <button type="button" class="btn-download2">Download</button>
         </div>
         <img class="img-header-cat" src="img/img_cat_png.png" alt="" width="415px">
     </div>
@@ -97,12 +97,11 @@
                 Lorem Ipsum has been the industry's standard dummy text </p>
         </div>
         <form class="form-subscribe" >
-            <div class="input-container">
-                <label for="email">
-                    <img class="logo" src="img/mail.png" alt="" width="24px">
-                </label>
+
+            <label class="input-container">
+                <img class="logo" src="img/mail.png" alt="" width="24px">
                 <input type="email" name="email" id="email" placeholder="Enter your e-mail address">
-            </div>
+            </label>
             <button class="btn-subscribe">Subscribe</button>
         </form>
     </section>
@@ -134,8 +133,27 @@
     <div class="modal-body">
         <img src="img/modal_cat%201.png" alt="" width="110px">
         <p class="txt-modal-colorTitle">Thank you!</p>
-        <p class="txt-modal-content">Lorem Ipsum is simply dummy text of the printing industry. </p>
+        <p class="txt-modal-content">
+            <strong><span class="input-value"></span></strong>
+            Thank you for subscribing!!
+        </p>
         <button class="btn-closeModal">OK! I Love HODU</button>
+    </div>
+    <div class="modal-background"> </div>
+</div><div class="modal2">
+    <div class="modal-body">
+        <img src="img/modal_cat%201.png" alt="" width="110px">
+        <p class="txt-modal-colorTitle">Image Download?</p>
+        <p class="txt-modal-content">
+            <strong><span class="input-value"></span></strong>
+            Do you want to download Hodu.jpg?
+        </p>
+        <div>
+            <a href="img/img_cat_png.png" download>
+                <button class="btn-closeModal">OK! Download</button>
+            </a>
+            <button class="btn-cancel"> cancel </button>
+        </div>
     </div>
     <div class="modal-background"> </div>
 </div>
@@ -190,29 +208,40 @@
 
 </script>
 <script>
+    // -------- 버튼
     const modal = document.querySelector('.modal');
+    const modal2 = document.querySelector('.modal2');
     const btnOpenModal=document.querySelector('.btn-subscribe');
     const btnOpenModal2=document.querySelector('.btn-download');
     const btnOpenModal3=document.querySelector('.btn-download2');
     const btnCloseModal=document.querySelector('.btn-closeModal')
+    const btnCloseModal2=document.querySelector('.btn-cancel')
     const btnHome=document.querySelector('#btn-home')
     const btnShowMore=document.querySelector('.btn-showMore');
+    const addEmail = document.querySelector('.input-value')
 
     btnOpenModal.addEventListener("click", ()=>{
         if(inputEmail.value.length < 3 || inputEmail.value.indexOf("@") === -1 ) {
             window.alert('이메일을 입력해주세요');
             return;
-        } modal.style.display="flex";
+        }
+        addEmail.append(inputEmail.value);
+        modal.style.display="flex";
     })
     btnOpenModal2.addEventListener("click", ()=>{
-        modal.style.display="flex";
+        modal2.style.display="flex";
     })
     btnOpenModal3.addEventListener("click", ()=>{
-        modal.style.display="flex";
+        modal2.style.display="flex";
     })
 
     btnCloseModal.addEventListener("click", ()=>{
         modal.style.display="none";
+        addEmail.innerHTML= "";
+    })
+
+    btnCloseModal2.addEventListener("click", ()=>{
+        modal2.style.display="none";
     })
 
     btnHome.addEventListener("click", ()=>{
