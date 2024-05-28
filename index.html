@@ -204,7 +204,7 @@
     let pageNum = 1;
     let pageRandom = [];
     function createRandom(){ //랜덤숫자가 중복되지 않게 생성해주는 함수
-        const randNum = ~~(Math.random() * 1000) + 1;
+        const randNum = ~~(Math.random() * 200) + 1;
         if(pageRandom.indexOf(randNum) === -1){
             pageRandom.push(randNum);
         }
