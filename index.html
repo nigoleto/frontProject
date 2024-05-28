@@ -11,15 +11,15 @@
 <body>
 <header>
     <a class="link-home" name="link-home"></a>
-    <div class="menu-none">
-        <img class="btn-clearMenu">
+    <div class="menu-none display-none">
+        <img class="btn-clearMenu" src="img/arrow-right.png">
     </div>
     <nav class="nav">
 
         <a class="home" href="">
             <img class="img-logo" src="img/Logo-fin.png" alt="hodu_logo" width="130px" >
         </a>
-        <img class="btn-menu">
+        <img class="btn-menu display-none" src="img/menu.png">
         <div class="nav-right">
             <a href="#link-home">Home</a>
             <a href="#link-about">About</a>
@@ -148,18 +148,19 @@
         const user = navigator.userAgent;
         if ( user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
             console.log("mobile버젼");
-            btnMenu.setAttribute("src", "img/menu.png");
-            btnClear.setAttribute("src", "img/arrow-right.png");
             myMenu.append(navEle)
+            btnMenu.style.display = 'flex'
         }else{
             console.log("pc버젼");
             console.log(user);
+            btnMenu.style.display = 'none'
         }
     }
 
     const myHome = document.querySelector('.home');
     const myMenu = document.querySelector('.menu-none');
     const navEle = document.querySelector('.nav-right');
+    const navContaniner = document.querySelector('.nav');
 
     const btnClear = document.querySelector('.btn-clearMenu');
     const btnMenu = document.querySelector('.btn-menu');
@@ -171,6 +172,25 @@
         myMenu.style.display="none";
     })
 
+
+
+
+    const mql = window.matchMedia("screen and (max-width: 768px)");
+
+
+    mql.addListener(function(e) {
+        if(e.matches) {
+            console.log('모바일 화면 입니다.');
+            myMenu.append(navEle)
+            btnMenu.style.display = 'flex'
+        } else {
+            console.log('데스크탑 화면 입니다.');
+            btnMenu.style.display = 'none'
+            navContaniner.append(navEle)
+        }
+
+
+    });
 
 </script>
 <script>
@@ -282,18 +302,18 @@
 
     // ---------------------- 반응형 -----------------------
 
-    // const imgCat = document.querySelector('.img-header-cat')
+    //
     // const mql = window.matchMedia("screen and (max-width: 768px)");
     //
     //
     // mql.addListener(function(e) {
     //     if(e.matches) {
     //         console.log('모바일 화면 입니다.');
-    //         imgCat.setAttribute("width", "200px");
+    //
     //
     //     } else {
     //         console.log('데스크탑 화면 입니다.');
-    //         imgCat.setAttribute("width", "415px")
+    //
     //     }
     //
     //
