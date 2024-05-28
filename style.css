@@ -734,4 +734,8 @@ footer {
     .modal2 .btn-closeModal {
         margin-bottom: 20px;
     }
+
+    input {
+        font-size: 16px;
+    }
 }
