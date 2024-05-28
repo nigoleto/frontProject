@@ -129,3 +129,5 @@ noForm.addEventListener('click', (e) => {
 })
 
 const inputEmail = document.querySelector("#email");
+
+

@@ -451,6 +451,8 @@ footer {
     color: black;
 }
 
+
+/*---------------------nav menu-------*/
 .display-none{
     display: none;
 }
@@ -498,6 +500,36 @@ footer {
 /*        transform: translateY(0);*/
 /*    }*/
 /*}*/
+
+.hodu {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 2s linear;
+}
+
+.hodu:nth-child(2) {
+    animation-duration: 2.5s; /* 두 번째 하트는 더 느리게 떨어지도록 */
+}
+
+.hodu:nth-child(3) {
+    animation-duration: 1.5s; /* 세 번째 하트는 더 빠르게 떨어지도록 */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-200px) rotateZ(0deg); /* 시작 위치: 화면 위에서 시작 */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 20px)) rotateZ(1080deg); /* 종료 위치: 화면 아래에서 사라짐 */
+        opacity: 0;
+    }
+}
+
+
+
+/*------------------------------반응형-------------------------------*/
+
 
 @media screen and (max-width: 1200px){
     header{
@@ -738,4 +770,9 @@ footer {
     input {
         font-size: 16px;
     }
+
+    /*.hodu img {*/
+    /*    width: 60px;*/
+    /*}*/
 }
+
