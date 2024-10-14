@@ -1,6 +1,6 @@
 # ormi-FrontEnd-Project  
 <br/>
-url: 
+URL: 
 https://nigoleto.github.io/frontProject/
 <br/>
 frontend project 
